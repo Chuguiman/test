@@ -14,7 +14,8 @@ router.post(
             .normalizeEmail(),
         body('password', "Mínimo 6 carácteres 🥶")
             .trim()
-            .isLength({ min: 6 })
+            .isLength({ min: 6 }),
+        body('password', "Formato Incorrecto 🤯")
             .custom((value, {req}) => {
                 if(value !== req.body.repassword){
                     throw new Error('No coinciden');
